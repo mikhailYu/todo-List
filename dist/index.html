@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dunzo</title>
+    <link rel="icon" href="./images/headerIMG.png" type="icon">
+    <link rel="stylesheet" href="./stylesheet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        
+        <div id="taskEditorCont">
+            <div class="taskEditorBtnsCont">
+                <div class="taskEditorStarCont">
+                    <img class="taskEditorStarIcon" src="./images/importantIcon.png" alt="important icon">
+                </div>
+                <div class="taskEditorCloseCont">
+                    <div class="taskEditorClose">X</div>
+                </div>
+            </div>
+                <div class="taskEditorInputFieldCont">
+                    <div class="taskEditorTaskNameCont">
+                        <div class="taskEditorText">Task Name:</div>
+                        <input type="text" id="taskNameInput" name="taskNameInput" placeholder="Enter task name...">
+                    </div>
+                    <div class="taskEditorDateCont">
+                        <div class="taskEditorText">Due date:</div> 
+                        <div class="taskEditorDate">12/34/56</div>
+                    </div>
+                        <div class="taskEditorDescCont">
+                            <div class="taskEditorText">Description:</div>
+                                <textarea name="taskDescInput" id="taskDescInput" cols="20" rows="10" placeholder="Provide task description..."></textarea>
+                </div>
+            </div>
+            <div class="taskEditorConfirmBtnCont">
+                <button id="confirmBtn" type="button">Confirm</button>
+            </div>
+        </div>
+
+        
+
+
+        <div class="title">
+            <img src="./images/headerIMG.png" alt="siteLogo"> 
+            <p>Dunzo</p>
+        </div>
+    </header>
+
+    <div id="content">
+        <div class="leftCont">
+            <div class="tabTasks">
+               <img src="./images/tabTasksIcon.png" alt="tasks icon"> 
+              <p>Tasks</p>
+            </div>
+            <div class="tabImportant">
+                <img src="./images/importantIcon.png" alt="important icon">
+            <p>Important!</p>
+        </div>
+            <div class="tabToday"><img src="./images/tabTodayIcon.png" alt="today icon">
+            <p>Today</p>
+        </div>
+            <div class="tabUpcoming"><img src="./images/tabUpcomingIcon.png" alt="upcoming icon">
+            <p>Upcoming</p>
+        </div>
+            <div class="tabLater"><img src="./images/tabLaterIcon.png" alt="later icon">
+            <p>Later...</p></div>
+        </div>
+        <div class="middleCont">
+            <div class="projNameCont">
+                <div class="projName">Sample Project</div>
+                <div class="projEditCont">
+                    <img class="projEdit" src="./images/editIcon.png" alt="Edit Icon">
+                </div>
+            </div>
+            <div class="taskCont">
+                <div class="taskBox">
+                    <div class="taskCheckBoxCont">
+                        <div class="taskCheckBox">
+                            <img class="taskTick" src="./images/tick.png" alt="tick icon">
+                        </div>
+                    </div>
+                    <div class="taskNameCont">
+                        <div class="taskName">Sample Task</div>
+                    </div>
+                    <div class="taskDateCont">
+                        <div class="taskDate">12/11/56</div>
+                    </div>
+                    <div class="taskStarCont">
+                        <img class="taskStarIcon" src="./images/importantIcon.png" alt="important icon">
+                    </div>
+                    <div class="taskDelCont">
+                        <img class="taskDelIcon" src="./images/deleteIcon.png" alt="delete icon">
+                    </div>
+                </div>
+
+            </div>
+            <button id="newTaskBtn" type="button">+ Add Task</button>
+        </div>
+        <div class="rightCont">
+            <div class="rightName">Projects:</div>
+            <div class="projectsList">
+                <div class="projectBox">
+                    <div class="projectName">Sample Project</div> 
+                    <img class="projectDelImg" src="./images/deleteIcon.png" alt="del icon">
+                </div>
+                
+                
+            </div>
+            <div class="newProjCont">
+                <input type="text" id="newProjInput" name="newProjInput" placeholder="New Project...">
+                <button id="newProjBtn" type="button">+ Add Project</button>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div>
+            <p>Created by Mikhail Y. 2022 | <a target="_blank" href="https://github.com/mikhailYu"><img src="./images/githubLogo.png" alt="github logo"></a></p> 
+        </div>
+    </footer>
+    
+
+    <script src="main.js"></script>
+</body>
+</html>

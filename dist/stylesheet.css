@@ -1,0 +1,523 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    text-decoration: none;
+    background: none;
+    outline: none;
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+     box-sizing: border-box; 
+    -webkit-appearance: none;
+    font-family: 'Titillium Web', sans-serif;
+} 
+
+:root{
+    --main-color-dark: linear-gradient(rgb(34, 76, 105), rgb(33, 65, 88) );
+    --left-color-dark: rgb(36, 44, 53);
+    --right-color-dark: rgb(21, 37, 54);
+    --header-color-dark: rgb(25, 28, 34);
+    --footer-color-dark: rgb(9, 11, 14);
+    --border-color-dark: rgb(0, 183, 255);
+    --leftBtns-color-dark: rgb(28, 142, 207);
+    --checkBoxBg-color-dark: rgb(0, 56, 78);
+    --middle-background: rgb(10, 31, 44);
+    --task-list: rgb(1, 35, 58);
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    max-width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    color: white;
+}
+/* header */
+
+header{
+    height: 10vh;
+    max-height: 10vh;
+    min-height: 100px;
+    background-color: var(--header-color-dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 3px solid var(--border-color-dark);
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    font-weight: bold;
+    width: 15%;
+    user-select: none;
+
+}
+
+/* middle section */
+
+#content{
+    height: 85vh;
+
+    display: flex;
+}
+
+.leftCont{
+    width: 15vw;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    font-weight: bold;
+    padding-top: 30px;
+    background-color: var(--left-color-dark);
+}
+
+.leftCont>div{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding-left: 10px;
+
+    background-color: var(--leftBtns-color-dark);
+    width: 170px;
+    height: 20px;
+    min-height: 40px;
+    border-radius: 10px;
+}
+
+.leftCont>div:hover, #newTaskBtn:hover,
+ #newProjBtn:hover, .projectName:hover,
+ .projectDelImg:hover, .taskCheckBox:hover,
+ .taskEditorStarIcon:hover, .taskEditorClose:hover,
+ #confirmBtn:hover{
+    cursor: pointer;
+    transform: scale(1.03);
+    filter: brightness(1.4);
+}
+
+.leftCont>div>img{
+    width: 2em;
+}
+
+.middleCont{
+    width: 70vw;
+    background-image: var(--main-color-dark);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding-top: 30px;
+}
+
+.projNameCont{
+    background-color: var(--task-list);
+    width: 50%;
+    height: 7%;
+    text-overflow: ellipsis;
+
+    border: 2px solid var(--border-color-dark);
+
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 60px;
+}
+
+.projName{
+    font-size: 2em;
+    font-weight: bold;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.projEditCont
+{
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.projEdit{
+    width: 30px;
+}
+
+.taskCont{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.taskBox{
+    background-color: var(--task-list);
+    border: 1px solid var(--border-color-dark);
+    width: 70%;
+    height: 40px;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.taskCheckBoxCont{
+    width: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.taskCheckBox{
+    border: 1px solid white;
+    border-radius: 50px;
+    height: 25px;
+    width: 25px;
+    background-color: var(--checkBoxBg-color-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.taskTick{
+    width: 15px;
+}
+
+.taskNameCont{
+    width: 70%;
+    padding-left: 20px;
+}
+
+.taskName{
+    width: max-content;
+    font-size: 15px;
+    color: white;
+}
+
+.taskDateCont{
+    width: 15%;
+}
+
+.taskDate{
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    width: max-content;
+}
+
+.taskDate:hover, .taskName:hover{
+    cursor: pointer;
+    color: rgb(0, 174, 255);
+    transform: scale(1.1);
+    font-weight: bolder;
+}
+
+.taskStarCont, .taskDelCont{
+    width: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.taskStarCont:hover, .taskDelCont:hover, .projEdit:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.taskStarIcon, .taskDelIcon{
+    width: 30px;
+    background-color: "none";
+    border-radius: 50px;
+}
+
+
+#newTaskBtn{
+    background-color: var(--leftBtns-color-dark);
+    width: 10%;
+    height: 5%;
+    border-radius: 10px;
+    color: white;
+    font-size: 1em;
+}
+
+.rightCont{
+    width: 15vw;
+    background-color: var(--right-color-dark);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    gap: 20px;
+
+    padding-top: 30px;
+}
+
+.rightName{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.projectsList{
+    width: 80%;
+    min-height: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.projectBox{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 300px;
+    max-width: 100%;
+    height: 40px;
+    min-height: 40px;
+    border-radius: 10px;
+    background-color: var(--leftBtns-color-dark);
+}
+
+.projectName{
+    background-color: var(--leftBtns-color-dark);
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: bold;
+    
+}
+
+.projectDelImg{
+    height: 40px;
+    padding: 5px;
+    background-color: var(--leftBtns-color-dark);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.newProjCont{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#newProjInput{
+    border: 1px solid var(--border-color-dark);
+    width: 90%;
+    height: 25px;
+    color: white;
+    background-color: var(--footer-color-dark);
+    padding-left: 10px;
+    border-radius: 10px;
+
+}
+
+#newProjBtn{
+    background-color: var(--leftBtns-color-dark);
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    color: white;
+    font-size: 1em;
+}
+
+/* footer */
+
+footer{
+    height: 5vh;
+    max-height: 5vh;
+    min-height: 20px;
+    background-color: var(--footer-color-dark);
+    display: flex;
+    justify-content: center;
+    user-select: none;
+}
+
+footer>div{
+    display: flex;
+    justify-content: center;
+}
+
+footer>div>p{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+footer>div>p>a>img{
+    background-color: white;
+    border-radius: 100px;
+    width: 2em;
+    filter: invert();
+}
+
+footer>div>p>a>img:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+/* task editor*/
+
+#taskEditorCont
+{
+    position: absolute;
+    width: 500px;
+    height: 700px;
+    border-radius: 10px;
+    background-color: var(--header-color-dark);
+
+    top: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+
+    display: none;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
+    padding: 10px;
+}
+
+.taskEditorBtnsCont{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 90%;
+    height: 10%;
+}
+
+.taskEditorStarCont
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    height: max-content;
+}
+
+.taskEditorStarIcon{
+    width: 40px;
+    border-radius: 50px;
+}
+
+.taskEditorClose
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid white;
+    border-radius: 50px;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+}
+
+.taskEditorInputFieldCont{
+    width: 90%;
+    height: 80%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.taskEditorTaskNameCont{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    padding-top: 10px;
+}
+
+.taskEditorText{
+    font-size: 20px;
+}
+
+#taskNameInput{
+    border: 1px solid var(--border-color-dark);
+    width: 70%;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+}
+
+.taskEditorDescCont, .taskEditorDateCont{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    padding-top: 10px;
+}
+
+.taskEditorDescCont{
+    height: 70%;
+}
+
+
+
+#taskDescInput{
+    border: 1px solid var(--border-color-dark);
+    width: 70%;
+    height: 100%;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.taskEditorConfirmBtnCont{
+    width: 90%;
+    height: 10%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#confirmBtn{
+    color: white;
+    background-color: var(--leftBtns-color-dark);
+    font-size: 25px;
+    padding: 5px 20px;
+    border-radius: 10px;
+}
