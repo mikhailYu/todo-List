@@ -66,7 +66,7 @@ header{
 /* middle section */
 
 #content{
-    height: 85vh;
+    min-height: 85vh;
 
     display: flex;
 }
@@ -101,7 +101,7 @@ header{
  #newProjBtn:hover, .projectName:hover,
  .projectDelImg:hover, .taskCheckBox:hover,
  .taskEditorStarIcon:hover, .taskEditorClose:hover,
- #confirmBtn:hover{
+ #confirmBtn:hover, .pneBtn:hover{
     cursor: pointer;
     transform: scale(1.03);
     filter: brightness(1.4);
@@ -163,7 +163,7 @@ header{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
 }
 
 .taskBox{
@@ -266,9 +266,11 @@ header{
     flex-direction: column;
     align-items: center;
     height: 100%;
-    gap: 20px;
+    gap: 15px;
 
     padding-top: 30px;
+
+    overflow: hidden;
 }
 
 .rightName{
@@ -278,7 +280,6 @@ header{
 
 .projectsList{
     width: 80%;
-    min-height: 5%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -404,7 +405,7 @@ footer>div>p>a>img:hover{
 
     display: none;
     flex-direction: column;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
 
     padding: 10px;
@@ -521,3 +522,66 @@ footer>div>p>a>img:hover{
     padding: 5px 20px;
     border-radius: 10px;
 }
+
+/* project name editor*/
+
+#projectNameEditorCont
+{
+    position: absolute;
+    width: 400px;
+    height: 150px;
+    border-radius: 10px;
+    background-color: var(--header-color-dark);
+
+    top: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+
+    display: none;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
+    padding-top: 30px;
+}
+
+.pneInputCont
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#pneInput
+{
+    border: 1px solid var(--border-color-dark);
+    border-radius: 10px;
+    color: white;
+    padding: 0px 15px;
+    width: 80%;
+    text-align: center;
+}
+
+.pneBtnCont
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+}
+
+.pneBtn 
+{
+    color: white;
+    background-color: var(--leftBtns-color-dark);
+    font-size: 20px;
+    padding: 5px 20px;
+    border-radius: 10px;
+}
+
+

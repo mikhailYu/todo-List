@@ -1,27 +1,94 @@
-function taskEditor ={
+import addTask from "./addTask";
+import { currentSelectedProj, projectArr, getTaskByID} from "./storage";
+import {updateDomTask} from "./dom"
+
 const taskEditorCont = document.getElementById("taskEditorCont"),
-taskEditorCloseBtn = document.querySelector(".taskEditorClose"),
-taskEditorNewTaskBtn = document.getElementById("newTaskBtn"),
-taskEditorNewProjBtn = document.getElementById("newProjBtn");
+taskEditorStarIcon = document.querySelector(".taskEditorStarIcon");
+let editorStarred = false,
+passOnStarred = false,
+isEdit = false,
+taskBeingEdited; 
+
+taskEditorStarIcon.src = "./images/importantIcon.png";
+taskEditorStarIcon.addEventListener("click", editorStarSwitch);
 
 
 
-taskEditorCloseBtn.addEventListener("click", closeEditor);
-taskEditorNewTaskBtn.addEventListener("click", openEditor);
+function editorStarSwitch(){
+    editorStarred == false ? editorStarredFalse (): editorStarredTrue();
 
-    function closeEditor(){
-        taskEditorCont.style.display="none";
-        taskEditorNewTaskBtn.style.display="inline-block";
+        function editorStarredTrue (){
+            editorStarred = false;
+            taskEditorStarIcon.src = "./images/importantIcon.png";
+            passOnStarred = false;
+        };
+
+        function editorStarredFalse (){
+            editorStarred = true;
+            taskEditorStarIcon.src = "./images/importantIconActive.png";
+            passOnStarred = true;
     };
-
-    function openEditor(){
-        taskEditorCont.style.display="flex";
-        taskEditorNewTaskBtn.style.display="none";
-    };
-
-
 };
 
+function editorStarCheck(){
+    if( editorStarred == false){
+        taskEditorStarIcon.src =  "./images/importantIcon.png"
+    } else {
+        taskEditorStarIcon.src = "./images/importantIconActive.png"
+    }
+}
 
+function closeEditor(){
+    taskEditorCont.style.display="none";
+    newTaskBtn.style.display="inline-block";
+    taskNameInput.value = "";
+    taskDescInput.value = "";
+    editorStarred = false;
+};
 
-export default taskEditor;
+function openEditor(){
+    taskEditorCont.style.display="flex";
+    newTaskBtn.style.display="none";
+    passOnStarred = false;
+    editorStarCheck()
+};
+
+function editTask(taskID){
+    isEdit = true;
+    const taskToEdit = projectArr[currentSelectedProj].taskList[taskID];
+
+    taskEditorCont.style.display="flex";
+    newTaskBtn.style.display="none";
+
+    taskNameInput.value = taskToEdit.taskName;
+    taskDescInput.value = taskToEdit.taskDesc;
+
+    editorStarred = taskToEdit.taskStar;
+    editorStarCheck();
+
+    taskBeingEdited = taskID;
+};
+
+function taskEditorConfirm(){
+    if (isEdit){
+        editTaskConfirm();
+        isEdit = false;
+    } else {
+        addTask();
+    };
+};
+
+function editTaskConfirm(){
+    const taskEditArr = projectArr[currentSelectedProj].taskList[taskBeingEdited];
+
+    taskEditArr.taskName = taskNameInput.value;
+    taskEditArr.taskDesc = taskDescInput.value;
+
+    taskEditArr.taskStar = editorStarred;
+
+    updateDomTask();
+    
+    closeEditor();
+};
+
+export {closeEditor, openEditor, passOnStarred, editTask, taskEditorConfirm};
