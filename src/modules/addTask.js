@@ -9,6 +9,8 @@ function addClass(element, className) {
 }
 
 
+import {saveStorage} from "./storage"
+
 function addTask(){
 
     if(projectArr[getSelectedProject()] == null){
@@ -17,8 +19,6 @@ function addTask(){
     } 
     
     if ( projectsCheck() == true){
-
-    const dueDate = "12/34/56";
 
     function Task (taskIndex, taskName, taskDesc, taskDueDate){
         
@@ -36,18 +36,20 @@ function addTask(){
     };
 
     const task = new Task(getArrLengthTask(), 
-    taskNameInput.value, taskDescInput.value, dueDate);
+    taskNameInput.value, taskDescInput.value, taskDateInput.value);
 
     projectArr[getSelectedProject()].taskList.push(task);
 
+    
+
     closeEditor();
     createTaskBox((getArrLengthTask() -1));
-} else {
-    closeEditor();
-}
+    } else {
+        closeEditor();
+    }
 
+    saveStorage();
 
-    
 };
 
 

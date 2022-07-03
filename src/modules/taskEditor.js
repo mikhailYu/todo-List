@@ -1,5 +1,6 @@
 import addTask from "./addTask";
-import { currentSelectedProj, projectArr, getTaskByID} from "./storage";
+import { currentSelectedProj, projectArr, 
+    getTaskByID,getTodayDate, saveStorage} from "./storage";
 import {updateDomTask} from "./dom"
 
 const taskEditorCont = document.getElementById("taskEditorCont"),
@@ -7,7 +8,8 @@ taskEditorStarIcon = document.querySelector(".taskEditorStarIcon");
 let editorStarred = false,
 passOnStarred = false,
 isEdit = false,
-taskBeingEdited; 
+taskBeingEdited,
+taskDateInput = document.getElementById("taskDateInput");
 
 taskEditorStarIcon.src = "./images/importantIcon.png";
 taskEditorStarIcon.addEventListener("click", editorStarSwitch);
@@ -50,6 +52,7 @@ function openEditor(){
     taskEditorCont.style.display="flex";
     newTaskBtn.style.display="none";
     passOnStarred = false;
+    taskDateInput.value = getTodayDate();
     editorStarCheck()
 };
 
@@ -62,6 +65,7 @@ function editTask(taskID){
 
     taskNameInput.value = taskToEdit.taskName;
     taskDescInput.value = taskToEdit.taskDesc;
+    taskDateInput.value = taskToEdit.taskDueDate;
 
     editorStarred = taskToEdit.taskStar;
     editorStarCheck();
@@ -83,10 +87,13 @@ function editTaskConfirm(){
 
     taskEditArr.taskName = taskNameInput.value;
     taskEditArr.taskDesc = taskDescInput.value;
+    taskEditArr.taskDueDate = taskDateInput.value;
 
     taskEditArr.taskStar = editorStarred;
 
     updateDomTask();
+
+    saveStorage();
     
     closeEditor();
 };

@@ -1,4 +1,4 @@
-import { currentSelectedProj, projectArr } from "./storage";
+import { currentSelectedProj, projectArr, saveStorage } from "./storage";
 import {updateDomProjects, selectedProj} from "./dom"
 
 const pneEditorBase = document.getElementById("projectNameEditorCont"),
@@ -35,6 +35,7 @@ function confirmPNEedit(){
         projectArr[currentSelectedProj].projectName = pneNameInput.value;
         updateDomProjects();
         selectedProj(projectSelector);
+        saveStorage();
         closePNEeditor();
     }
     

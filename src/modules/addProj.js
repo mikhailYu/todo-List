@@ -1,5 +1,5 @@
 import { createProjectBox, selectedProj } from "./dom";
-import {projectArr, getArrLength, getProject} from "./storage"
+import {projectArr, getArrLength, getProject, saveStorage} from "./storage"
 
 
 
@@ -28,6 +28,8 @@ function addProject(){
     newProjInput.value= "";
     
     createProjectBox(projectArr.length-1)
+
+    saveStorage();
 
 }
 

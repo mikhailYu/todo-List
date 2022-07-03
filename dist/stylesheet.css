@@ -471,6 +471,24 @@ footer>div>p>a>img:hover{
     font-size: 20px;
 }
 
+.taskEditorDate{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#taskDateInput{
+    color: white;
+    color-scheme: dark;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+::-webkit-calendar-picker-indicator{
+    margin-left: -20px;
+}
+
 #taskNameInput{
     border: 1px solid var(--border-color-dark);
     width: 70%;

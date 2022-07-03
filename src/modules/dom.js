@@ -1,7 +1,8 @@
 import { closeEditor, editTask } from "./taskEditor";
 import {projectArr, getArrLength, 
     currentSelectedProj, getTaskByID, 
-    getSelectedProject, getArrLengthTask, projectsCheck} from "./storage";
+    getSelectedProject, getArrLengthTask, projectsCheck, getTodayDate,
+    getNextWeekDate, saveStorage, getStorage} from "./storage";
 
 function addClass(element, className) {
     return element.classList.add(className);
@@ -57,7 +58,7 @@ function createTaskBox(taskID){
 
     taskTick.style.display = "none";
 
-    taskDate.textContent = "update due date";
+    taskDate.textContent = projectArr[currentSelectedProj].taskList[taskID].taskDueDate;
 
     taskCont.appendChild(taskBox);
 
@@ -83,7 +84,9 @@ function createTaskBox(taskID){
     taskDelIcon.addEventListener("click", deleteTask);
     taskCheckBox.addEventListener("click", taskChecked);
     taskStarCont.addEventListener("click", taskStarred);
-    taskNameDisplay.addEventListener("click", editTaskInitialize)
+    taskNameDisplay.addEventListener("click", editTaskInitialize);
+    taskDate.addEventListener("click", editTaskInitialize);
+
     
     function editTaskInitialize(){
         editTask(taskID)
@@ -102,6 +105,8 @@ function createTaskBox(taskID){
             taskStarIcon.src = "./images/importantIconActive.png";
             
         };
+
+        saveStorage();
         
     };
 
@@ -119,14 +124,17 @@ function createTaskBox(taskID){
             taskTick.style.display = "inline-block";
             
         };
+
+        saveStorage();
     };
 
     function deleteTask(){
         const taskBoxRemove = taskBox;
         projectArr[currentSelectedProj].taskList[taskID].taskActive = false;
-        console.log(projectArr)
+        saveStorage();
         taskBoxRemove.remove();
     }
+    
 
 };
 
@@ -162,7 +170,7 @@ function createProjectBox(projIndex){
         const projectBoxRemove = projectBoxCont;
         projectBoxRemove.remove();
         projectArr[projID].active = false;
-
+        saveStorage();
         cycleSelectedProj();
     };
 
@@ -249,6 +257,67 @@ function sortTasks (){
     displayTasks();
 }
 
+function sortTasksToday(){
+    let today = getTodayDate();
+
+    clearTasks();
+
+    for(let i = 0; i < projectArr[currentSelectedProj].taskList.length; i++){
+        if (projectArr[currentSelectedProj].taskList[i].taskDueDate == today){
+            createTaskBox(i);
+        }
+    };
+
+};
+
+function sortTasksUpcoming(){
+    let todayStr = getTodayDate(),
+    nextWeekStr = getNextWeekDate(),
+    today = new Date(todayStr),
+    nextWeek = new Date(nextWeekStr),
+    dueDate;
+
+    clearTasks();
+
+    for(let i = 0; i < projectArr[currentSelectedProj].taskList.length; i++){
+        dueDate = new Date(projectArr[currentSelectedProj].taskList[i].taskDueDate);
+        
+        if ( dueDate >= today && dueDate <= nextWeek){
+            createTaskBox(i);
+        }
+    };
+    
+};
+
+function sortTasksLater(){
+    let todayStr = getTodayDate(),
+    nextWeekStr = getNextWeekDate(),
+    today = new Date(todayStr),
+    nextWeek = new Date(nextWeekStr),
+    dueDate;
+
+    clearTasks();
+
+    for(let i = 0; i < projectArr[currentSelectedProj].taskList.length; i++){
+        dueDate = new Date(projectArr[currentSelectedProj].taskList[i].taskDueDate);
+        
+        if (dueDate > nextWeek){
+            createTaskBox(i);
+        }
+    };
+};
+
+function populateFromSave(){
+    projectArr = getStorage();
+    
+    for (let i = 0 ; i < projectArr.length; i++){
+        if (projectArr[i].active == true){
+            createProjectBox(i);
+        }
+    }
+};
+
 
 export {createTaskBox, createProjectBox, selectedProj,
-     updateDomTask, updateDomProjects, sortByImportant, sortTasks }
+     updateDomTask, updateDomProjects, sortByImportant, sortTasks,
+    sortTasksToday, sortTasksUpcoming, sortTasksLater, populateFromSave }
